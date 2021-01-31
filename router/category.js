@@ -18,7 +18,6 @@ router.post('/',async(req,res) =>{
     }
 });
 
-
 // To get all category
 
 router.get('/allCategory',async(req,res) => {

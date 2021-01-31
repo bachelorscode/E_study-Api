@@ -1,19 +1,19 @@
-const {model,Schema} = require('mongoose');
+const { model, Schema } = require('mongoose');
 
 const schema = new Schema({
-    videoName:{
-        type:String,
-      
+    title: {
+        type: String,
+
     },
-    videoUrl:{
-        type:String,
-        
+    url: {
+        type: String,
+
     },
-},{
-    timestamps:true
+}, {
+    timestamps: true
 });
 
-const Video  = model('Video',schema);
+const Video = model('Video', schema);
 module.exports = Video;
 
 
