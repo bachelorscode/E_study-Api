@@ -25,10 +25,10 @@ const CourseSchmea = new Schema({
             type: String,
             required: true
         },
-
         videos: [
             {
-                video: { type: mongoose.Schema.Types.ObjectId, ref: "Video" }
+                title: { type: String, required: true },
+                url: { type: String, required: true }
             }
         ]
     }],
