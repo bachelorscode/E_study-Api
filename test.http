@@ -1,0 +1,56 @@
+GET http://localhost:3000/quiz
+#####################
+POST http://localhost:3000/quiz 
+Content-Type: application/json
+
+{
+    "title":"Quiz 1",
+    "questions":[
+        {
+            "title":"what is your ",
+            "options":[
+                {
+                    "title":"Satyam"
+                },
+                {
+                    "title":"gaurav the jhaatu"
+                },
+                {
+                    "title":"no one"
+                },
+                {
+                    "title":"Ashish"
+                }
+            ],
+            "answer":"Satyam"
+        }
+       
+    ]
+}
+
+
+#######
+
+PATCH http://localhost:3000/quiz/6017c0e2e5e436183056f384
+Content-Type: application/json
+
+{
+    "questions":[{
+        "title":"where do you live",
+        "options":[
+            {
+                "title":"patna"
+            },
+            {
+                "title":"bihar shrif"
+            },
+            {
+                "title":"delhi"
+            },
+            {
+                "title":"mubai"
+            }
+        ],
+        "answer":"patna"
+    }]
+}

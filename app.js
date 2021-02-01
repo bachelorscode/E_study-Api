@@ -29,11 +29,13 @@ const userRouter = require('./router/user')
 const categoryRouter = require('./router/category');
 const courseRouter = require('./router/course');
 const videoRouter = require('./router/video');
+const quizRouter = require('./router/quiz');
 
 app.use('/category', categoryRouter);
 app.use('/users', userRouter);
 app.use('/course', courseRouter);
 app.use('/videos', videoRouter);
+app.use('/quiz',quizRouter);
 
 
 const Course = require('./models/course')
