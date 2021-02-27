@@ -1,5 +1,6 @@
 const express = require('express');
 const Course =  require('../models/course');
+const SubCourse = require('../models/SubCourse');
 
 const router = new express.Router();
 
@@ -24,10 +25,25 @@ router.post('/add/course',async(req,res)=>{
 
 router.post('/add/subCourse/:id',async(req,res)=>{
     try {
-        const {title} = req.body;
-        let single = await Course.findById(req.params.id);
-        let r =await single.genrateTitle(title);
-        res.status(201).send(r);
+        if(req.files){
+            const ver = Course.findById(req.params.id);
+            if(ver){
+                const {title} = req.body;
+                req.files.videThumbNail.mv('./public/'+title+'thubNail.jpg');
+                req.files.video.mv('./public/'+title+'vName.mp4');
+                const tPath = 'public/'+title+'thubNail.jpg';
+                const vPath = 'public/'+title+'vName.mp4';
+                const subCourse = new SubCourse();
+                subCourse.videThumbNail = tPath;
+                subCourse.videoPath = vPath;
+                subCourse.videoTitle = title;
+                subCourse.courseId = req.params.id;
+                await subCourse.save();
+                res.status(200).send({subCourse});
+            }else{
+                res.status(404).send({msg:"Course Not Found"});
+            }
+        }
     } catch (error) {
         res.send(error);
     }
@@ -45,5 +61,14 @@ router.get('/courseAll/',async(req,res) => {
 });
 
 // 
+
+router.get('/getSubCourse/:id',async(req,res)=>{
+    try {
+        var res = await SubCourse.find({courseId:req.params.id});
+        res.status(200).send({data:res});
+    } catch (error) {
+        res.status(404).send(error);
+    }
+})
 
 module.exports = router;

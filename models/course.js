@@ -19,22 +19,7 @@ const CourseSchmea = new Schema({
     },
     thumbnail:{
         type:String
-    },
-    subCourse: [{
-            title: {
-                type: String,
-                required:true
-            },
-
-            // videos: [
-            //     {
-            //         videoTitle:String,
-            //         video: {type: mongoose.Schema.Types.ObjectId, ref:"Video"}
-            //     }
-            // ]
-        }],
-    
-        
+    },  
    category : {
         type: mongoose.Schema.Types.ObjectId,
         ref:'Category'
