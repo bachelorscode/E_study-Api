@@ -1,10 +1,13 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors =  require('cors');
+const upload = require('express-fileupload');
 const app =  express();
+
+app.use(upload());
 app.use(cors());
 app.use(express.json());
-
+app.use('/public',express.static('public'));
 const port =  process.env.PORT || 3000;
 const mongoUri =  process.env.MONGODB_URI || 'mongodb://localhost/E_study';
 

@@ -4,15 +4,15 @@ const mongoose = require('mongoose')
 const CourseSchmea = new Schema({
     courseName:{
         type:String,
-        required:true,
+        //required:true,
     },
     description:{
         type:String,
-        required:true
+        //required:true
     },
     author:{
         type:String,
-        required:true,
+        // required:true,
     },
     authorImage:{
         type:String
